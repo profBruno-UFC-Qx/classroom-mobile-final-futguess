@@ -4,7 +4,7 @@
 
 ## Equipe
 * **Nome do Aluno(a) 1:** Renan Alencar Soares 555524
-* **Nome do Aluno(a) 2:** [Seu nome e matrícula]
+* **Nome do Aluno(a) 2:** Francisco Samuel Cabral Leitão 553382
 * ...
 
 ---
