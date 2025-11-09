@@ -1,4 +1,5 @@
-package com.mobile.futguess.ui.login
+package mobile.futguess.ui.register
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,6 +16,10 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -24,15 +29,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mobile.futguess.R
-
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.mobile.futguess.ui.register.RegisterViewModel
 
 @Composable
-fun LoginScreen(
-    onLoginClick: () -> Unit,
+fun RegisterScreen(
     onRegisterClick: () -> Unit,
-    viewModel: LoginViewModel = viewModel()
+    onBackClick: () -> Unit,
+    viewModel: RegisterViewModel = viewModel()
 ) {
 
 
@@ -49,7 +54,6 @@ fun LoginScreen(
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-
         Image(
             painter = painterResource(id = R.drawable.fundofutguess),
             contentDescription = "Imagem de fundo",
@@ -65,12 +69,23 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Text(text = "FutGuess",
+            Text(
+                text = "Criar Conta",
                 style = MaterialTheme.typography.headlineLarge,
-                color = Color.White)
+                color = Color.White
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            OutlinedTextField(
+                value = viewModel.name.value,
+                onValueChange = { viewModel.onNameChange(it) },
+                label = { Text("Nome") },
+                singleLine = true,
+                colors = textFieldColors
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
                 value = viewModel.email.value,
@@ -91,31 +106,42 @@ fun LoginScreen(
                 colors = textFieldColors
             )
 
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = viewModel.confirmPassword.value,
+                onValueChange = { viewModel.onConfirmPasswordChange(it) },
+                label = { Text("Confirmar Senha") },
+                singleLine = true,
+                visualTransformation = PasswordVisualTransformation(),
+                colors = textFieldColors
+            )
+
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { onLoginClick() },
+                onClick = { onRegisterClick() },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.White,
                     contentColor = Color.Black
                 ),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text("Entrar")
+                Text("Confirmar Registro")
             }
 
-
-            TextButton(onClick = { onRegisterClick() }) {
-                Text("Não tem uma conta? Cadastre-se",
-                    color = Color.White)
+            TextButton(onClick = { onBackClick() }) {
+                Text(
+                    "Já tem uma conta? Voltar para o Login",
+                    color = Color.White
+                )
             }
         }
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun LoginScreenPreview() {
-    LoginScreen(onLoginClick = {}, onRegisterClick = {})
+fun RegisterScreenPreview() {
+    RegisterScreen(onRegisterClick = {}, onBackClick = {})
 }
