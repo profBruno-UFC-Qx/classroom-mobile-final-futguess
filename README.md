@@ -3,9 +3,8 @@
 # Proposta de aplicativo
 
 ## Equipe
-* **Nome do Aluno(a) 1:** Renan Alencar Soares 555524
-* **Nome do Aluno(a) 2:** Francisco Samuel Cabral Leitão 553382
-* ...
+* **Nome do Aluno 1:** Renan Alencar Soares 555524
+* **Nome do Aluno 2:** Francisco Samuel Cabral Leitão 553382
 
 ---
 
@@ -28,6 +27,10 @@ O app também permitirá que o usuário crie uma conta, personalize seu perfil, 
 - [ ] Histórico de Partidas: Exibe uma lista com as partidas jogadas e resultados, armazenados localmente via Room.
 - [ ] Perfil do Usuário: Permite editar os seus dados pessoais (como nome, ícone, etc)
 - [ ] Modo Claro/Escuro: Interface adaptável ao tema do sistema com MaterialTheme.
+
+## Link do Repositório
+
+https://github.com/SamuelEngSoftware/Futguess
 
 ---
 
